@@ -96,6 +96,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useAsset } from '~/composables/useAsset'
 import BookPreviewModal from './BookPreviewModal.vue'
 
 const modalBook = ref<any>(null)
@@ -109,8 +110,8 @@ const books = [
     title: 'Mon petit livre pour les enfants tornades',
     subtitle: 'Un espace pour déposer tes émotions',
     description: 'Un livre doux et coloré qui aide les enfants TDAH à comprendre et exprimer leurs émotions à travers des activités simples et bienveillantes.',
-    frontCover: '/images/book2-front.jpg',
-    backCover: '/images/book2-back.jpg',
+    frontCover: useAsset('/images/book2-front.jpg'),
+    backCover: useAsset('/images/book2-back.jpg'),
     amazonLink: 'https://www.amazon.fr',
     stripeLink: '#',
     previewPages: [
@@ -124,8 +125,8 @@ const books = [
     title: 'Mon petit livre pour les mamans fatiguées',
     subtitle: 'Un espace pour respirer',
     description: 'Pour les mamans qui donnent tout chaque jour. Un espace de douceur, de ressourcement et de soutien bienveillant pour traverser les journées intenses.',
-    frontCover: '/images/book1-front.jpg',
-    backCover: '/images/book1-back.jpg',
+    frontCover: useAsset('/images/book1-front.jpg'),
+    backCover: useAsset('/images/book1-back.jpg'),
     amazonLink: 'https://www.amazon.fr',
     stripeLink: '#',
     previewPages: [

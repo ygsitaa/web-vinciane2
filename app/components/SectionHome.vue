@@ -11,7 +11,7 @@
         <div class="relative">
           <div class="absolute inset-0 rounded-full bg-terracotta/10"></div>
           <img 
-            src="/images/author-portrait.svg" 
+            :src="authorPortrait"
             alt="Vinciane Hodiamont – Auteure" 
             class="relative w-52 h-52 md:w-64 md:h-64 rounded-full object-cover object-top border-4 border-white"
           />
@@ -58,5 +58,9 @@
 </template>
 
 <script setup lang="ts">
+import { useAsset } from '~/composables/useAsset'
+
 defineEmits(['go-to-library', 'go-to-contact'])
+
+const authorPortrait = useAsset('/images/author-portrait.svg')
 </script>
