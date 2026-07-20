@@ -3,7 +3,7 @@
     class="hidden 2xl:flex fixed top-0 left-1/2 -translate-x-1/2 w-full z-50 transition-all duration-300 py-4 px-6 2xl:px-12 justify-between items-center glass-panel rounded-full mt-4 mx-4"
     style="width: calc(75% - 2rem);"
   >
-    <div class="flex items-center cursor-pointer" @click="slider.goTo(0)">
+    <div class="flex items-center cursor-pointer" @click="goToHome">
       <span class="font-heading font-bold text-2xl tracking-wider text-dark-text">
         Vinciane <span class="text-terracotta">H.</span>
       </span>
@@ -11,39 +11,59 @@
 
     <nav class="flex items-center gap-8">
       <button 
-        @click="slider.goTo(0)" 
+        @click="goToSection(0)" 
         class="text-sm font-medium tracking-wide uppercase transition-colors hover:text-terracotta cursor-pointer"
-        :class="slider.currentIndex.value === 0 ? 'text-terracotta' : 'text-mid'"
+        :class="!isSecretPage && slider.currentIndex.value === 0 ? 'text-terracotta' : 'text-mid'"
       >
         Accueil
       </button>
       <button 
-        @click="slider.goTo(1)" 
+        @click="goToSection(1)" 
         class="text-sm font-medium tracking-wide uppercase transition-colors hover:text-terracotta cursor-pointer"
-        :class="slider.currentIndex.value === 1 ? 'text-terracotta' : 'text-mid'"
+        :class="!isSecretPage && slider.currentIndex.value === 1 ? 'text-terracotta' : 'text-mid'"
       >
-        Bibliothèque Tribusix
+        Qui suis-je
       </button>
       <button 
-        @click="slider.goTo(2)" 
+        @click="goToSection(2)" 
         class="text-sm font-medium tracking-wide uppercase transition-colors hover:text-terracotta cursor-pointer"
-        :class="slider.currentIndex.value === 2 ? 'text-terracotta' : 'text-mid'"
+        :class="!isSecretPage && slider.currentIndex.value === 2 ? 'text-terracotta' : 'text-mid'"
       >
-        Jardin Des Mamans Fatiguées
+        Bibliothèque
       </button>
       <button 
-        @click="slider.goTo(3)" 
+        @click="goToSection(3)" 
         class="text-sm font-medium tracking-wide uppercase transition-colors hover:text-terracotta cursor-pointer"
-        :class="slider.currentIndex.value === 3 ? 'text-terracotta' : 'text-mid'"
+        :class="!isSecretPage && slider.currentIndex.value === 3 ? 'text-terracotta' : 'text-mid'"
+      >
+        Les Jardins
+      </button>
+      <button 
+        @click="goToSection(4)" 
+        class="text-sm font-medium tracking-wide uppercase transition-colors hover:text-terracotta cursor-pointer"
+        :class="!isSecretPage && slider.currentIndex.value === 4 ? 'text-terracotta' : 'text-mid'"
       >
         Contact
       </button>
-      <a href="#" target="_blank" class="text-sm font-semibold text-terracotta hover:text-dark-text transition-colors uppercase tracking-wider ml-2">
-        Le coin des petites tornades ↗
-      </a>
-      <a href="#" target="_blank" class="text-sm font-semibold text-terracotta hover:text-dark-text transition-colors uppercase tracking-wider">
-        Blog ↗
-      </a>
+      <div class="relative" ref="linksMenuRef">
+        <button 
+          @click="isLinksMenuOpen = !isLinksMenuOpen" 
+          class="text-sm font-semibold text-terracotta hover:text-dark-text transition-colors uppercase tracking-wider ml-2"
+        >
+          Liens Externes ↓
+        </button>
+        <div 
+          v-if="isLinksMenuOpen" 
+          class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+        >
+          <a href="#" target="_blank" class="block px-4 py-2 text-sm font-semibold text-terracotta hover:bg-gray-100 transition-colors uppercase tracking-wider">
+            Le coin des petites tornades ↗
+          </a>
+          <a href="#" target="_blank" class="block px-4 py-2 text-sm font-semibold text-terracotta hover:bg-gray-100 transition-colors uppercase tracking-wider">
+            Blog ↗
+          </a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -58,14 +78,28 @@
   <MobileNav 
     v-if="isMobileMenuOpen" 
     @close="isMobileMenuOpen = false" 
-    :slider="slider" 
   />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useSlider } from '../composables/useSlider'
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const slider = useSlider()
+const { isSecretPage, slider, goToSection, goToHome } = usePublicNavigation()
 const isMobileMenuOpen = ref(false)
+const isLinksMenuOpen = ref(false)
+const linksMenuRef = ref<HTMLElement | null>(null)
+
+const handleClickOutside = (event: MouseEvent) => {
+  if (linksMenuRef.value && !linksMenuRef.value.contains(event.target as Node)) {
+    isLinksMenuOpen.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>

@@ -10,7 +10,6 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start pb-20 md:pb-0">
         <div class="flex flex-col gap-8">
           <div class="soft-panel p-8 rounded-3xl">
-            <div class="section-badge">✉️ Contact</div>
             <h2 class="text-3xl font-heading text-dark-text mb-4">Contactez-moi</h2>
             <p class="text-mid mb-6 leading-relaxed">Vous souhaitez partager un témoignage, poser une question, découvrir les projets ou passer commande par email ? Le formulaire ci-dessous est là pour ça.</p>
 
@@ -64,7 +63,7 @@
           <div class="warm-panel p-6 rounded-3xl text-center">
             <p class="font-heading font-bold text-xl text-dark-text mb-2">📚 Un livre peut ouvrir un monde</p>
             <p class="text-mid text-sm mb-4">Chaque page est pensée pour apporter présence, douceur et compréhension.</p>
-            <button @click="slider.goTo(1)" class="btn-secondary">Voir la bibliothèque</button>
+            <button @click="slider.goTo(2)" class="btn-secondary">Voir la bibliothèque</button>
           </div>
         </div>
       </div>

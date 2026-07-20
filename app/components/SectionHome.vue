@@ -12,7 +12,7 @@
           <div class="absolute inset-0 rounded-full bg-terracotta/10"></div>
           <img 
             :src="authorPortrait"
-            alt="Vinciane Hodiamont – Auteure" 
+            alt="Vinciane Hodiamont - Auteure" 
             class="relative w-52 h-52 md:w-64 md:h-64 rounded-full object-cover object-top border-4 border-white"
           />
         </div>
@@ -21,19 +21,18 @@
       <!-- Right: Text -->
       <div class="flex flex-col items-center md:items-start text-center md:text-left max-w-xl">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-4" style="color: #3D2B1F;">
-          Vinciane<br/>
-          <span class="text-terracotta">Hodiamont</span>
+          Tribu<span class="text-terracotta">Six</span>
         </h1>
         <p class="text-lg md:text-xl font-heading italic mb-6 text-mid">
-          <span>🌻</span> Auteure de livres pour les enfants TDAH et leurs familles
+          <span>🌻</span> Accompagner les parents et enfants extraordinaires avec douceur.
         </p>
 
         <div class="p-6 mb-8 text-left leading-relaxed text-mid text-sm md:text-base bg-white/95 border border-terracotta/20 rounded-3xl">
           <p class="mb-3">
-            Passionnée par le monde de l'enfance et touchée de près par le TDAH, <strong class="text-dark-text">Vinciane Hodiamont</strong> écrit des livres qui parlent vrai — avec douceur, humour et bienveillance.
+            Autrice, maman de six enfants et créatrice de ressources pour les familles confrontées au TDAH, aux troubles des apprentissages et à l'épuisement parental.
           </p>
           <p>
-            À travers sa collection <strong class="text-terracotta">Tribusix</strong>, elle offre aux enfants "tornades" et à leurs parents des outils concrets pour vivre ensemble avec plus de sérénité, de compréhension… et beaucoup d'amour.
+            À travers sa collection <strong class="text-terracotta">TribuSix</strong>, elle offre aux enfants "tornades" et à leurs parents des outils concrets pour vivre ensemble avec plus de sérénité, de compréhension… et beaucoup d'amour.
           </p>
         </div>
 
@@ -62,5 +61,5 @@ import { useAsset } from '~/composables/useAsset'
 
 defineEmits(['go-to-library', 'go-to-contact'])
 
-const authorPortrait = useAsset('/images/author-portrait.svg')
+const authorPortrait = useAsset('/images/TribuSix_logo_rond.png')
 </script>

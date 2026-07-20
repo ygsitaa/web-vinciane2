@@ -11,9 +11,6 @@
 
       <!-- Header -->
       <div class="text-center mb-10">
-        <div class="section-badge mx-auto w-fit">
-          <span>📖</span> Collection
-        </div>
         <h2 class="text-3xl md:text-5xl font-heading font-bold mb-3" style="color: #3D2B1F;">
           Bibliothèque <span class="text-terracotta">Tribusix</span>
         </h2>

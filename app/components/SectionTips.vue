@@ -1,156 +1,94 @@
 <template>
-  <section id="jardin" class="w-full relative flex items-start justify-center snap-start snap-always overflow-y-auto">
+  <section id="jardin" class="w-full h-full relative flex items-start justify-center snap-start snap-always overflow-hidden">
 
-    <!-- Background -->
+    <!-- Fixed background image covering the viewport -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-20 -left-20 w-72 h-72 rounded-full opacity-20" style="background: radial-gradient(circle, #E3BCB5, transparent 70%);"></div>
-      <div class="absolute -bottom-20 right-10 w-80 h-80 rounded-full opacity-15" style="background: radial-gradient(circle, #FBD4AD, transparent 70%);"></div>
-      <!-- Leaf decorations -->
-      <div class="absolute top-20 right-10 text-7xl opacity-10 select-none">🌿</div>
-      <div class="absolute bottom-20 left-10 text-6xl opacity-10 select-none">🌸</div>
+      <div 
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style="background-image: url(/images/background_jardin.png)"
+      ></div>
+      <div class="absolute inset-0 bg-cream/60"></div>
     </div>
 
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 xl:px-12 pt-6 xl:pt-28 pb-12">
+    <!-- Scrollable content -->
+    <div class="relative z-10 w-full h-full overflow-y-auto">
+      <div class="w-full max-w-6xl mx-auto px-6 xl:px-12 pt-6 xl:pt-28 pb-20">
 
-      <!-- Header -->
-      <div class="text-center mb-10">
-        <div class="section-badge mx-auto w-fit">
-          <span>🌷</span> Conseils & Ressources
-        </div>
-        <h2 class="text-3xl md:text-5xl font-heading font-bold mb-3" style="color: #3D2B1F;">
-          Jardin des <span class="text-terracotta">Mamans Fatiguées</span>
-        </h2>
-        <p class="text-mid max-w-xl mx-auto text-base md:text-lg">
-          Un espace de douceur et de ressources pratiques pour accompagner au quotidien vos enfants TDAH avec bienveillance et sérénité.
-        </p>
-      </div>
-
-      <!-- Tips Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-        <div 
-          v-for="tip in tips" 
-          :key="tip.id" 
-          class="tip-card flex flex-col gap-3"
-          :style="`border-top: 4px solid ${tip.accentColor};`"
-        >
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shrink-0" :style="`background: ${tip.bgColor};`">
-              {{ tip.emoji }}
-            </div>
-            <h3 class="font-heading font-bold text-base text-dark-text leading-snug">{{ tip.title }}</h3>
+        <WelcomeSection>
+          <div class="p-6 mb-8 text-center leading-relaxed text-mid text-sm md:text-base bg-white/85 border border-terracotta/20 rounded-3xl">
+            <h2 class="text-3xl md:text-5xl font-heading font-bold mb-6" style="color: #3D2B1F;">
+              Le Jardin des <span class="text-terracotta">Mamans Fatiguées</span>
+            </h2>
+            <p class="mb-3">
+              Un endroit où les mamans peuvent souffler, reprendre des forces et se rappeler qu'elles font déjà de leur mieux. 
+              Merci d'avoir choisi de lire <em>Mon petit livre pour les mamans fatiguées</em>. J'espère qu'au fil des pages, tu t'es sentie comprise, écoutée d'une certaine manière, en déposant tes émotions… et peut-être un peu moins seule.
+            </p>
+            <p>
+              Si ce livre t'a apporté un peu de douceur, alors il a rempli sa mission. Aujourd'hui, j'aimerais simplement te dire… 
+              <strong class="text-terracotta">Merci d'être là.</strong> Installe-toi quelques minutes. Respire. Tu es la bienvenue.
+            </p>
           </div>
-          <p class="text-sm text-mid leading-relaxed flex-1">{{ tip.text }}</p>
-          <div 
-            v-if="tip.tag" 
-            class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold w-fit"
-            :style="`background: ${tip.bgColor}; color: ${tip.accentColor};`"
+        </WelcomeSection>
+
+        <ResourcesCard title="Profite de ces petites douceurs gratuites" subtitle="Des ressources conçues pour t'accompagner au quotidien.">
+          <ResourceButton 
+            title="Audio à écouter" 
+            description="Écouter" 
+            @click="isAudioModalOpen = true"
           >
-            {{ tip.tag }}
+            <template #icon>🎧</template>
+          </ResourceButton>
+          
+          <ResourceButton 
+            title="PDF à télécharger" 
+            description="Télécharger" 
+            @click="isPdfModalOpen = true"
+          >
+            <template #icon>📄</template>
+          </ResourceButton>
+        </ResourcesCard>
+
+        <div class="text-center max-w-3xl mx-auto px-6">
+          <div class="bg-linear-to-br from-green-50 to-cream p-8 rounded-3xl border border-green-800/10 shadow-sm relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 text-9xl opacity-5">🌿</div>
+            <h3 class="font-heading font-bold text-2xl text-dark-text mb-4">Le Portillon du Jardin</h3>
+            <p class="text-mid mb-6">
+               Merci d'être là.
+               Parce que tu as acheté ce livre et que tu m'as accordé ta confiance, j'ai eu envie de t'offrir un petit cadeau.
+               Il ne changera peut-être pas le monde, mais j'espère qu'il illuminera un peu ta journée, qu'il t'offrira quelques minutes rien qu'à toi et qu'il te rappellera que, toi aussi, tu mérites de prendre soin de toi.
+               Clique simplement sur le bouton ci-dessous pour découvrir ton cadeau.
+            </p>
+            <button @click="isPasswordModalOpen = true" class="btn-primary inline-flex items-center gap-2">
+              <span>🗝️</span> Découvrir mon cadeau
+            </button>
           </div>
         </div>
 
       </div>
-
-      <!-- Footer CTA -->
-      <div class="mt-10 p-6 rounded-3xl text-center" style="background: linear-gradient(135deg, rgba(251,212,173,0.5), rgba(227,188,181,0.4)); border: 1px solid rgba(232,150,100,0.25);">
-        <p class="font-heading font-bold text-xl text-dark-text mb-2">
-          💌 Des questions ou des témoignages à partager ?
-        </p>
-        <p class="text-mid text-sm mb-4">Vinciane est là pour vous écouter et vous accompagner.</p>
-        <button @click="$emit('go-to-contact')" class="btn-primary">
-          Prendre contact
-        </button>
-      </div>
-
     </div>
+
+    <AudioLibraryModal :isOpen="isAudioModalOpen" @close="isAudioModalOpen = false" />
+    <PdfLibraryModal :isOpen="isPdfModalOpen" @close="isPdfModalOpen = false" />
+    <GardenPasswordModal v-model="isPasswordModalOpen" @success="goToPrivateGarden" />
   </section>
 </template>
 
 <script setup lang="ts">
-defineEmits(['go-to-contact'])
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import WelcomeSection from './garden/WelcomeSection.vue'
+import ResourcesCard from './garden/ResourcesCard.vue'
+import ResourceButton from './garden/ResourceButton.vue'
+import AudioLibraryModal from './garden/AudioLibraryModal.vue'
+import PdfLibraryModal from './garden/PdfLibraryModal.vue'
+import GardenPasswordModal from './garden/GardenPasswordModal.vue'
 
-const tips = [
-  {
-    id: 1,
-    emoji: '🌬️',
-    title: 'La respiration comme ancre',
-    text: 'Apprenez à votre enfant la respiration "4-7-8" : inspirer 4 secondes, retenir 7, expirer 8. Pratiquez ensemble dans les moments calmes pour que ça devienne un réflexe lors des crises.',
-    accentColor: '#E89664',
-    bgColor: 'rgba(232, 150, 100, 0.12)',
-    tag: '🧠 Régulation émotionnelle'
-  },
-  {
-    id: 2,
-    emoji: '📅',
-    title: 'La routine visuelle',
-    text: 'Les enfants TDAH ont besoin de structure. Créez un tableau de routine illustré avec des images pour chaque étape du matin et du soir. La prévisibilité est une sécurité pour eux.',
-    accentColor: '#F3BC62',
-    bgColor: 'rgba(243, 188, 98, 0.12)',
-    tag: '📋 Organisation'
-  },
-  {
-    id: 3,
-    emoji: '⏱️',
-    title: 'Le timer comme allié',
-    text: 'Utilisez un timer visuel (type Time Timer) plutôt qu\'un minuteur sonore. Voir le temps qui passe concrètement aide énormément les enfants qui ont du mal avec la notion abstraite du temps.',
-    accentColor: '#E3BCB5',
-    bgColor: 'rgba(227, 188, 181, 0.2)',
-    tag: '⚙️ Outils pratiques'
-  },
-  {
-    id: 4,
-    emoji: '💬',
-    title: 'Parler en positif',
-    text: 'Remplacez "Arrête de bouger !" par "Peux-tu tenir encore 2 minutes ?". Les cerveaux TDAH entendent mieux les instructions positives et concrètes. Soyez spécifique et bref.',
-    accentColor: '#E89664',
-    bgColor: 'rgba(232, 150, 100, 0.12)',
-    tag: '💡 Communication'
-  },
-  {
-    id: 5,
-    emoji: '🛑',
-    title: 'Votre droit de pause',
-    text: 'Vous n\'êtes pas une machine. Quand vous sentez que vous atteignez votre limite, posez-vous. Cinq minutes seul·e dans les toilettes c\'est valide. Prendre soin de vous, c\'est prendre soin d\'eux.',
-    accentColor: '#F3BC62',
-    bgColor: 'rgba(243, 188, 98, 0.12)',
-    tag: '❤️ Bien-être parental'
-  },
-  {
-    id: 6,
-    emoji: '🎮',
-    title: 'Le mouvement comme besoin',
-    text: 'Le besoin de bouger n\'est pas un caprice, c\'est neurologique. Prévoyez des pauses mouvements régulières : sauter 10 fois, faire des étoiles, courir jusqu\'à la boîte aux lettres. Ça aide vraiment à se concentrer ensuite.',
-    accentColor: '#E3BCB5',
-    bgColor: 'rgba(227, 188, 181, 0.2)',
-    tag: '🏃 Activité physique'
-  },
-  {
-    id: 7,
-    emoji: '🌙',
-    title: 'Le rituel du soir apaisé',
-    text: 'Une heure avant le coucher : lumières tamisées, pas d\'écrans. Proposez un bain tiède, de la musique douce, un livre. Les cerveaux TDAH mettent souvent plus de temps à "décrocher". Anticipez.',
-    accentColor: '#E89664',
-    bgColor: 'rgba(232, 150, 100, 0.12)',
-    tag: '😴 Sommeil'
-  },
-  {
-    id: 8,
-    emoji: '🤝',
-    title: 'Créer des alliances à l\'école',
-    text: 'Travaillez main dans la main avec les enseignants. Un petit mot en début d\'année expliquant les besoins de votre enfant peut tout changer. N\'attendez pas que les difficultés s\'accumulent.',
-    accentColor: '#F3BC62',
-    bgColor: 'rgba(243, 188, 98, 0.12)',
-    tag: '🏫 École'
-  },
-  {
-    id: 9,
-    emoji: '✨',
-    title: 'Célébrer les petits succès',
-    text: 'Un effort mérite d\'être nommé. "J\'ai remarqué que tu as posé ton sac tout seul ce matin, c\'est super !" Ces petites reconnaissances construisent l\'estime de soi qui est souvent fragilisée chez les enfants TDAH.',
-    accentColor: '#E3BCB5',
-    bgColor: 'rgba(227, 188, 181, 0.2)',
-    tag: '🌟 Estime de soi'
-  }
-]
+const router = useRouter()
+const isAudioModalOpen = ref(false)
+const isPdfModalOpen = ref(false)
+const isPasswordModalOpen = ref(false)
+
+const goToPrivateGarden = () => {
+  router.push('/jardin-secret')
+}
 </script>

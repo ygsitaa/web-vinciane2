@@ -11,28 +11,35 @@
       <button 
         @click="navTo(0)" 
         class="text-2xl font-heading tracking-widest transition-colors"
-        :class="slider.currentIndex.value === 0 ? 'text-terracotta' : 'text-dark-text'"
+        :class="!isSecretPage && slider.currentIndex.value === 0 ? 'text-terracotta' : 'text-dark-text'"
       >
         Accueil
       </button>
       <button 
         @click="navTo(1)" 
         class="text-2xl font-heading tracking-widest transition-colors"
-        :class="slider.currentIndex.value === 1 ? 'text-terracotta' : 'text-dark-text'"
+        :class="!isSecretPage && slider.currentIndex.value === 1 ? 'text-terracotta' : 'text-dark-text'"
       >
-        Bibliothèque Tribusix
+        Qui suis-je
       </button>
       <button 
         @click="navTo(2)" 
         class="text-2xl font-heading tracking-widest transition-colors"
-        :class="slider.currentIndex.value === 2 ? 'text-terracotta' : 'text-dark-text'"
+        :class="!isSecretPage && slider.currentIndex.value === 2 ? 'text-terracotta' : 'text-dark-text'"
       >
-        Jardin Des Mamans Fatiguées
+        Bibliothèque Tribusix
       </button>
       <button 
         @click="navTo(3)" 
         class="text-2xl font-heading tracking-widest transition-colors"
-        :class="slider.currentIndex.value === 3 ? 'text-terracotta' : 'text-dark-text'"
+        :class="!isSecretPage && slider.currentIndex.value === 3 ? 'text-terracotta' : 'text-dark-text'"
+      >
+        Jardin Des Mamans Fatiguées
+      </button>
+      <button 
+        @click="navTo(4)" 
+        class="text-2xl font-heading tracking-widest transition-colors"
+        :class="!isSecretPage && slider.currentIndex.value === 4 ? 'text-terracotta' : 'text-dark-text'"
       >
         Contact
       </button>
@@ -44,29 +51,12 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  slider: {
-    type: Object,
-    required: true
-  }
-})
-
 const emit = defineEmits(['close'])
 
+const { isSecretPage, slider, goToSection } = usePublicNavigation()
+
 const navTo = (index: number) => {
-  props.slider.goTo(index)
-  // On mobile we don't slide horizontally, so we might need to scroll vertically
-  // Nuxt/Vue can handle scroll to element if we give them ids, 
-  // but for now just close menu and let the native scroll or layout handle it
+  goToSection(index)
   emit('close')
-  
-  if (window.innerWidth < 768) {
-    const sections = ['#home', '#bibliotheque', '#jardin', '#contact']
-    const selector = sections[index]
-    if (selector) {
-      const el = document.querySelector(selector)
-      if (el) el.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
 }
 </script>

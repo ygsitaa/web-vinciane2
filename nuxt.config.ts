@@ -4,6 +4,11 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      gardenPassword: process.env.NUXT_PUBLIC_GARDEN_PASSWORD || 'portillon',
+    },
+  },
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [

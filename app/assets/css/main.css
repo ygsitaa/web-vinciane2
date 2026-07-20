@@ -220,7 +220,7 @@ html, body {
 
 /* Show native scrollbars when needed */
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: pink;
@@ -231,7 +231,7 @@ html, body {
 }
 * {
   -ms-overflow-style: auto;
-  scrollbar-width: auto;
+  scrollbar-width: thin;
   scrollbar-color: pink black;
 }
 
