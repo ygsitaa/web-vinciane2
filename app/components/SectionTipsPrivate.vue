@@ -5,7 +5,7 @@
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <div 
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        :style="{ backgroundImage: `url(/images/background_jardin.png)` }"
+        :style="{ backgroundImage: `url(${bg})` }"
       ></div>
       <div class="absolute inset-0 bg-cream/60"></div>
     </div>
@@ -88,8 +88,11 @@ import ResourceButton from './garden/ResourceButton.vue'
 import AudioLibraryModal from './garden/AudioLibraryModal.vue'
 import PdfLibraryModal from './garden/PdfLibraryModal.vue'
 import MeditationLibraryModal from './garden/MeditationLibraryModal.vue'
+import { useAsset } from '~/composables/useAsset'
 
 const isAudioModalOpen = ref(false)
 const isPdfModalOpen = ref(false)
 const isMeditationModalOpen = ref(false)
+
+const bg = useAsset('/images/background_jardin.png')
 </script>

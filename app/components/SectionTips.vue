@@ -5,7 +5,7 @@
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <div 
         class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style="background-image: url(/images/background_jardin.png)"
+          :style="{ backgroundImage: `url(${bg})` }"
       ></div>
       <div class="absolute inset-0 bg-cream/60"></div>
     </div>
@@ -82,6 +82,7 @@ import ResourceButton from './garden/ResourceButton.vue'
 import AudioLibraryModal from './garden/AudioLibraryModal.vue'
 import PdfLibraryModal from './garden/PdfLibraryModal.vue'
 import GardenPasswordModal from './garden/GardenPasswordModal.vue'
+import { useAsset } from '~/composables/useAsset'
 
 const router = useRouter()
 const isAudioModalOpen = ref(false)
@@ -91,4 +92,6 @@ const isPasswordModalOpen = ref(false)
 const goToPrivateGarden = () => {
   router.push('/jardin-secret')
 }
+
+const bg = useAsset('/images/background_jardin.png')
 </script>
