@@ -1,4 +1,4 @@
-const SECTION_HASHES = ['#home', '#qui-suis-je', '#bibliotheque', '#jardin', '#contact']
+const SECTION_HASHES = ['#home', '#qui-suis-je', '#bibliotheque', '#guide', '#jardin', '#contact']
 
 export function usePublicNavigation() {
   const route = useRoute()

@@ -1,7 +1,7 @@
 <template>
   <header 
-    class="hidden 2xl:flex fixed top-0 left-1/2 -translate-x-1/2 w-full z-50 transition-all duration-300 py-4 px-6 2xl:px-12 justify-between items-center glass-panel rounded-full mt-4 mx-4"
-    style="width: calc(75% - 2rem);"
+    class="hidden xl:flex fixed top-0 left-1/2 -translate-x-1/2 w-full z-50 transition-all duration-300 py-4 px-6 2xl:px-12 justify-between items-center glass-panel rounded-full mt-4 mx-4"
+    style="width: calc(90% - 2rem);"
   >
     <div class="flex items-center cursor-pointer" @click="goToHome">
       <span class="font-heading font-bold text-2xl tracking-wider text-dark-text">
@@ -36,12 +36,19 @@
         class="text-sm font-medium tracking-wide uppercase transition-colors hover:text-terracotta cursor-pointer"
         :class="!isSecretPage && slider.currentIndex.value === 3 ? 'text-terracotta' : 'text-mid'"
       >
-        Les Jardins
+        Guide
       </button>
       <button 
         @click="goToSection(4)" 
         class="text-sm font-medium tracking-wide uppercase transition-colors hover:text-terracotta cursor-pointer"
         :class="!isSecretPage && slider.currentIndex.value === 4 ? 'text-terracotta' : 'text-mid'"
+      >
+        Les Jardins
+      </button>
+      <button 
+        @click="goToSection(5)" 
+        class="text-sm font-medium tracking-wide uppercase transition-colors hover:text-terracotta cursor-pointer"
+        :class="!isSecretPage && slider.currentIndex.value === 5 ? 'text-terracotta' : 'text-mid'"
       >
         Contact
       </button>
@@ -67,7 +74,7 @@
     </nav>
   </header>
 
-  <button class="fixed top-4 right-4 z-50 2xl:hidden flex items-center justify-center w-14 h-14 rounded-full bg-terracotta text-white shadow-xl shadow-terracotta/30 border border-white/30" @click="isMobileMenuOpen = true" aria-label="Ouvrir le menu mobile">
+  <button class="fixed top-4 right-4 z-50 xl:hidden flex items-center justify-center w-14 h-14 rounded-full bg-terracotta text-white shadow-xl shadow-terracotta/30 border border-white/30" @click="isMobileMenuOpen = true" aria-label="Ouvrir le menu mobile">
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
       <line x1="3" y1="7" x2="21" y2="7"></line>
       <line x1="3" y1="12" x2="21" y2="12"></line>

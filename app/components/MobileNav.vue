@@ -34,12 +34,19 @@
         class="text-2xl font-heading tracking-widest transition-colors"
         :class="!isSecretPage && slider.currentIndex.value === 3 ? 'text-terracotta' : 'text-dark-text'"
       >
-        Jardin Des Mamans Fatiguées
+        Le Guide des Parents
       </button>
       <button 
         @click="navTo(4)" 
         class="text-2xl font-heading tracking-widest transition-colors"
         :class="!isSecretPage && slider.currentIndex.value === 4 ? 'text-terracotta' : 'text-dark-text'"
+      >
+        Jardin Des Mamans Fatiguées
+      </button>
+      <button 
+        @click="navTo(5)" 
+        class="text-2xl font-heading tracking-widest transition-colors"
+        :class="!isSecretPage && slider.currentIndex.value === 5 ? 'text-terracotta' : 'text-dark-text'"
       >
         Contact
       </button>

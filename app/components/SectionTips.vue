@@ -49,7 +49,7 @@
         </ResourcesCard>
 
         <div class="text-center max-w-3xl mx-auto px-6">
-          <div class="bg-linear-to-br from-green-50 to-cream p-8 rounded-3xl border border-green-800/10 shadow-sm relative overflow-hidden">
+          <div class="bg-linear-to-br from-green-50 to-cream p-8 rounded-3xl border border-green-800/10 shadow-sm relative overflow-hidden bg-cover"  :style="{ backgroundImage: `url(${bg2})`, backgroundBlendMode: 'lighten', backgroundColor: 'rgba(255, 255, 255, 0.8)'}">
             <div class="absolute -top-10 -right-10 text-9xl opacity-5">🌿</div>
             <h3 class="font-heading font-bold text-2xl text-dark-text mb-4">Le Portillon du Jardin</h3>
             <p class="text-mid mb-6">
@@ -93,5 +93,6 @@ const goToPrivateGarden = () => {
   router.push('/jardin-secret')
 }
 
-const bg = useAsset('/images/background_jardin.png')
+const bg = useAsset('/images/background_jardin_grand.jpg')
+const bg2 = useAsset('/images/background_portillon.jpg')
 </script>

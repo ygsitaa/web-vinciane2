@@ -1,7 +1,7 @@
 <template>
-  <section id="home" class="w-full relative flex items-center justify-center snap-start snap-always overflow-hidden">
+  <section id="home" class="w-full relative flex items-center justify-center snap-start snap-always overflow-hidden bg-cover" :style="{ backgroundImage: `url(${bg})` }">
     <!-- Decorative background -->
-    <div class="absolute inset-0 z-0 bg-cream"></div>
+    <!-- <div class="absolute inset-0 z-0 bg-cream"></div> -->
 
     <!-- Content -->
     <div class="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 py-24 md:py-0 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
@@ -61,5 +61,6 @@ import { useAsset } from '~/composables/useAsset'
 
 defineEmits(['go-to-library', 'go-to-contact'])
 
-const authorPortrait = useAsset('/images/TribuSix_logo_rond.png')
+const bg = useAsset('/images/background_accueil3.jpg')
+const authorPortrait = useAsset('/images/logo_tribusix.jpg')
 </script>

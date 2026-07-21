@@ -5,7 +5,7 @@ const isAnimating = ref(false)
 const direction = ref(1) // 1 for forward, -1 for backward
 
 export const useSlider = () => {
-  const totalSlides = 5
+  const totalSlides = 6
 
   const goTo = (index: number) => {
     if (isAnimating.value || index === currentIndex.value) return

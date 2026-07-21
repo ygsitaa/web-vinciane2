@@ -24,15 +24,21 @@
         :class="{'mobile-block': true}"
       />
 
+      <SectionGuide
+        ref="slide3"
+        class="slide-section w-full h-dvh md:h-full snap-start"
+        :class="{'mobile-block': true}"
+      />
+
       <SectionTips 
-        ref="slide3" 
+        ref="slide4" 
         class="slide-section w-full h-dvh md:h-full snap-start" 
-        @go-to-contact="slider.goTo(4)"
+        @go-to-contact="slider.goTo(5)"
         :class="{'mobile-block': true}"
       />
 
       <SectionContact 
-        ref="slide4" 
+        ref="slide5" 
         class="slide-section w-full h-dvh md:h-full snap-start" 
         :class="{'mobile-block': true}"
       />
@@ -63,6 +69,7 @@
 import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import gsap from 'gsap'
 import { useSlider } from '../composables/useSlider'
+import SectionGuide from './SectionGuide.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -75,6 +82,7 @@ const slide1 = ref<any>(null)
 const slide2 = ref<any>(null)
 const slide3 = ref<any>(null)
 const slide4 = ref<any>(null)
+const slide5 = ref<any>(null)
 const slides = ref<HTMLElement[]>([])
 
 const checkMobile = () => {
@@ -99,8 +107,8 @@ const checkMobile = () => {
 onMounted(async () => {
   await nextTick()
   
-  if (slide0.value && slide1.value && slide2.value && slide3.value && slide4.value) {
-    slides.value = [slide0.value.$el, slide1.value.$el, slide2.value.$el, slide3.value.$el, slide4.value.$el]
+  if (slide0.value && slide1.value && slide2.value && slide3.value && slide4.value && slide5.value) {
+    slides.value = [slide0.value.$el, slide1.value.$el, slide2.value.$el, slide3.value.$el, slide4.value.$el, slide5.value.$el]
   } else {
     // Fallback if refs fail for some reason
     const slideEls = document.querySelectorAll('.slide-section')
@@ -114,7 +122,7 @@ onMounted(async () => {
   const sectionQuery = route.query.section
   if (sectionQuery !== undefined && sectionQuery !== null && sectionQuery !== '') {
     const index = Number(sectionQuery)
-    if (!Number.isNaN(index) && index >= 0 && index <= 4) {
+    if (!Number.isNaN(index) && index >= 0 && index <= 5) {
       slider.goTo(index)
       await nextTick()
       scrollToSection(index)
