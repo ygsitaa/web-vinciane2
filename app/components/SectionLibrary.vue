@@ -14,8 +14,8 @@
         <h2 class="text-3xl md:text-5xl font-heading font-bold mb-3" style="color: #3D2B1F;">
           Bibliothèque <span class="text-terracotta">Tribusix</span>
         </h2>
-        <p class="text-mid max-w-xl mx-auto text-base md:text-lg">
-          Des livres écrits avec le cœur pour accompagner les enfants TDAH et leurs familles au quotidien.
+        <p class="text-mid max-w-2xl mx-auto text-base md:text-lg">
+          Des livres écrits avec le cœur pour accompagner les enfants, les parents et les familles, avec douceur, bienveillance… et beaucoup d'espoir.
         </p>
       </div>
 
@@ -104,9 +104,9 @@ const closeModal = () => { modalBook.value = null }
 const books = [
   {
     id: 1,
-    title: 'Mon petit livre pour les enfants tornades',
-    subtitle: 'Un espace pour déposer tes émotions',
-    description: 'Un livre doux et coloré qui aide les enfants TDAH à comprendre et exprimer leurs émotions à travers des activités simples et bienveillantes.',
+    title: "Mon petit livre pour les enfants tornades",
+    subtitle: "Parce que certains enfants ressentent le monde plus intensément.",
+    description: "Un livre écrit pour aider les enfants qui débordent d'énergie, d'émotions ou d'imagination à mieux comprendre ce qu'ils vivent, tout en leur rappelant qu'ils ont une immense valeur. Un outil pour ouvrir le dialogue entre les enfants et les adultes qui les accompagnent.",
     frontCover: useAsset('/images/book2-front.jpg'),
     backCover: useAsset('/images/book2-back.jpg'),
     amazonLink: 'https://www.amazon.fr',
@@ -119,9 +119,9 @@ const books = [
   },
   {
     id: 2,
-    title: 'Mon petit livre pour les mamans fatiguées',
-    subtitle: 'Un espace pour respirer',
-    description: 'Pour les mamans qui donnent tout chaque jour. Un espace de douceur, de ressourcement et de soutien bienveillant pour traverser les journées intenses.',
+    title: "Mon petit livre pour les mamans fatiguées",
+    subtitle: "Parce qu'on ne peut pas toujours être forte.",
+    description: " Un livre rempli de douceur pour toutes les mamans qui se sentent parfois dépassées, épuisées ou perdues dans leur quotidien.À travers des mots simples et bienveillants, ce livre vous invite à souffler, à déposer vos émotions et à vous rappeler que vous faites déjà de votre mieux.",
     frontCover: useAsset('/images/book1-front.jpg'),
     backCover: useAsset('/images/book1-back.jpg'),
     amazonLink: 'https://www.amazon.fr',

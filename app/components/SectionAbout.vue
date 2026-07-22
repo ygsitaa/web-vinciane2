@@ -1,7 +1,7 @@
 <template>
   <section id="qui-suis-je" class="w-full relative flex items-center justify-center snap-start snap-always overflow-hidden">
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <div class="absolute inset-0 bg-cream"></div>
+      <div class="absolute inset-0 bg-cover"  :style="{ backgroundImage: `url(${bg})` }"></div>
       <div class="absolute -top-20 -left-20 w-72 h-72 rounded-full opacity-25" style="background: radial-gradient(circle, #F3BC62, transparent 70%);"></div>
       <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-20" style="background: radial-gradient(circle, #E3BCB5, transparent 70%);"></div>
     </div>
@@ -28,9 +28,9 @@
       </div>
 
       <div class="flex flex-col items-center md:items-start text-center md:text-left max-w-2xl">
-        <p class="text-sm uppercase tracking-widest text-terracotta font-semibold mb-2">
+        <!-- <p class="text-sm uppercase tracking-widest text-terracotta font-semibold mb-2">
           {{ author.title }}
-        </p>
+        </p> -->
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight mb-3" style="color: #3D2B1F;">
           {{ author.name }}
         </h2>
@@ -38,14 +38,33 @@
           {{ author.subtitle }}
         </p>
 
-        <div class="soft-panel p-6 md:p-8 text-left leading-relaxed text-mid text-sm md:text-base rounded-3xl w-full">
-          <p
-            v-for="(paragraph, index) in author.paragraphs"
+        <div class="w-full mb-4 flex flex-wrap items-center gap-2">
+          <button
+            v-for="(paragraph, index) in paragraphOptions"
             :key="index"
-            :class="{ 'mb-4': index < author.paragraphs.length - 1 }"
+            type="button"
+            @click="selectedParagraphIndex = index"
+            :class="[
+              'rounded-full px-4 py-2 text-xs sm:text-sm font-semibold transition-colors',
+              selectedParagraphIndex === index
+                ? 'bg-terracotta text-white shadow-sm'
+                : 'bg-white/80 text-mid border border-white/70 hover:bg-peach/60'
+            ]"
           >
-            {{ paragraph }}
-          </p>
+            {{ paragraph.label }}
+          </button>
+        </div>
+
+        <div class="soft-panel p-4 sm:p-6 md:p-8 text-left leading-relaxed text-mid rounded-3xl w-full max-h-104 sm:max-h-120 md:max-h-104 overflow-y-auto">
+          <div class="space-y-4 text-sm sm:text-[15px] md:text-base leading-7 md:leading-8">
+            <p
+              v-for="(block, blockIndex) in selectedParagraphBlocks"
+              :key="blockIndex"
+              class="text-pretty"
+            >
+              {{ block }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -53,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { AuthorProfile } from '~/data/authorMockData'
 import { mockAuthorProfile } from '~/data/authorMockData'
 import { useAsset } from '~/composables/useAsset'
@@ -64,8 +83,36 @@ const props = withDefaults(defineProps<{
   author: () => mockAuthorProfile,
 })
 
+const selectedParagraphIndex = ref(0)
+
+const paragraphOptions = computed(() => [
+  { label: 'Qui suis-je ?' },
+  { label: 'Pourquoi TribuSix ?' },
+])
+
+const selectedParagraph = computed(() => {
+  const paragraph = props.author.paragraphs[selectedParagraphIndex.value]
+  return paragraph ?? ''
+})
+
+const selectedParagraphBlocks = computed(() =>
+  selectedParagraph.value
+    .split(/\n\s*\n/)
+    .map((block) => block.trim())
+    .filter(Boolean),
+)
+watch(
+  () => props.author,
+  () => {
+    selectedParagraphIndex.value = 0
+  },
+  { deep: true },
+)
+
 const photoSrc = computed(() => {
   const url = props.author.photo.url
   return url ? useAsset(url) : ''
 })
+
+const bg = useAsset('/images/background_quisuisje.jpg')
 </script>
