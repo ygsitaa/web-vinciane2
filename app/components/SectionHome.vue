@@ -30,8 +30,8 @@
         <div class="p-6 mb-8 text-left leading-relaxed text-mid text-sm md:text-base bg-white/95 border border-terracotta/20 rounded-3xl">
           <p class="mb-3">
             Ici, vous trouverez un espace pensé pour les familles qui cherchent à mieux comprendre, accompagner et soutenir leurs enfants, avec bienveillance, sans jugement et sans culpabilité.
-            Chaque enfant est unique. Chaque parent avance avec son histoire, ses doutes, ses espoirs et ses découvertes. Parce qu'il n'existe pas de mode d'emploi pour être parent, j'ai imaginé un lieu où chacun peut trouver des ressources, des repères, des mots qui rassurent et des instants pour souffler.
-            Au fil des pages, vous découvrirez des livres, des guides, des outils, des espaces dédiés aux parents et aux enfants, ainsi que des ressources pour vous accompagner, pas à pas, sur votre propre chemin.
+            Chaque enfant est unique. Chaque parent avance avec son histoire, ses doutes, ses espoirs et ses découvertes.<br/><br/> Parce qu'il n'existe pas de mode d'emploi pour être parent, j'ai imaginé un lieu où chacun peut trouver des ressources, des repères, des mots qui rassurent et des instants pour souffler.<br/><br/>
+            Au fil des pages, vous découvrirez des livres, des guides, des outils, des espaces dédiés aux parents et aux enfants, ainsi que des ressources pour vous accompagner, pas à pas, sur votre propre chemin.<br/><br/>
             Prenez le temps de vous installer. Vous êtes ici chez vous.
             Parce qu'il n'existe pas un seul chemin pour grandir, apprendre ou être parent.
           </p>
