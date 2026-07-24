@@ -1,45 +1,45 @@
 <template>
-  <div class="relative w-full h-full overflow-hidden md:overflow-hidden overflow-y-auto snap-y snap-mandatory scroll-smooth">
+  <div ref="scrollContainer" class="relative w-full h-full overflow-x-hidden overflow-y-auto md:overflow-hidden snap-y snap-mandatory scroll-smooth">
     <div 
       ref="sliderContainer" 
-      class="w-full h-[500dvh] md:h-full md:flex transition-none md:transition-transform md:duration-0"
+      class="w-full h-auto md:h-full md:flex transition-none md:transition-transform md:duration-0"
     >
       <SectionHome 
         ref="slide0" 
-        class="slide-section w-full h-dvh md:h-full snap-start" 
+        class="slide-section w-full min-h-screen md:h-full snap-start" 
         @go-to-library="slider.goTo(2)"
-        @go-to-contact="slider.goTo(4)"
+        @go-to-contact="slider.goTo(5)"
         :class="{'mobile-block': true}"
       />
 
       <SectionAbout
         ref="slide1"
-        class="slide-section w-full h-dvh md:h-full snap-start"
+        class="slide-section w-full min-h-screen md:h-full snap-start"
         :class="{'mobile-block': true}"
       />
 
       <SectionLibrary 
         ref="slide2" 
-        class="slide-section w-full h-dvh md:h-full snap-start" 
+        class="slide-section w-full min-h-screen md:h-full snap-start" 
         :class="{'mobile-block': true}"
       />
 
       <SectionGuide
         ref="slide3"
-        class="slide-section w-full h-dvh md:h-full snap-start"
+        class="slide-section w-full min-h-screen md:h-full snap-start"
         :class="{'mobile-block': true}"
       />
 
       <SectionTips 
         ref="slide4" 
-        class="slide-section w-full h-dvh md:h-full snap-start" 
+        class="slide-section w-full min-h-screen md:h-full snap-start" 
         @go-to-contact="slider.goTo(5)"
         :class="{'mobile-block': true}"
       />
 
       <SectionContact 
         ref="slide5" 
-        class="slide-section w-full h-dvh md:h-full snap-start" 
+        class="slide-section w-full min-h-screen md:h-full snap-start" 
         :class="{'mobile-block': true}"
       />
     </div>
@@ -84,6 +84,50 @@ const slide3 = ref<any>(null)
 const slide4 = ref<any>(null)
 const slide5 = ref<any>(null)
 const slides = ref<HTMLElement[]>([])
+const scrollContainer = ref<HTMLElement | null>(null)
+let sectionObserver: IntersectionObserver | null = null
+
+const updateActiveSection = (index: number) => {
+  if (index < 0 || index >= slides.value.length) return
+  if (slider.currentIndex.value !== index) {
+    slider.currentIndex.value = index
+  }
+}
+
+const observeVisibleSection = () => {
+  if (isDesktop.value || !scrollContainer.value || slides.value.length === 0) {
+    sectionObserver?.disconnect()
+    return
+  }
+
+  sectionObserver?.disconnect()
+  sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const visibleEntry = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => {
+          if (b.intersectionRatio !== a.intersectionRatio) {
+            return b.intersectionRatio - a.intersectionRatio
+          }
+          return Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top)
+        })[0]
+
+      if (!visibleEntry) return
+
+      const index = slides.value.findIndex((slide) => slide === visibleEntry.target)
+      if (index >= 0) {
+        updateActiveSection(index)
+      }
+    },
+    {
+      root: scrollContainer.value,
+      threshold: [0.2, 0.4, 0.6, 0.8],
+      rootMargin: '-10% 0px -40% 0px',
+    }
+  )
+
+  slides.value.forEach((slide) => sectionObserver?.observe(slide))
+}
 
 const checkMobile = () => {
   isDesktop.value = window.innerWidth >= 768
@@ -92,6 +136,7 @@ const checkMobile = () => {
     slides.value.forEach(slide => {
       gsap.set(slide, { clearProps: 'all' })
     })
+    observeVisibleSection()
   } else {
     // Re-apply GSAP styles if switching to desktop
     slides.value.forEach((slide, i) => {
@@ -116,6 +161,7 @@ onMounted(async () => {
   }
 
   checkMobile()
+  observeVisibleSection()
   window.addEventListener('resize', checkMobile)
   slider.initListeners()
 
@@ -132,12 +178,17 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
+  sectionObserver?.disconnect()
   window.removeEventListener('resize', checkMobile)
   slider.destroyListeners()
 })
 
-watch(() => slider.currentIndex.value, (newIdx, oldIdx) => {
-  if (!isDesktop.value) return // Let native vertical scroll handle mobile
+watch(() => slider.currentIndex.value, async (newIdx, oldIdx) => {
+  if (!isDesktop.value) {
+    await nextTick()
+    scrollToSection(newIdx)
+    return
+  }
   
   const direction = slider.direction.value
   const currentSlide = slides.value[oldIdx]
@@ -178,10 +229,12 @@ watch(() => slider.currentIndex.value, (newIdx, oldIdx) => {
 @media (max-width: 767px) {
   .mobile-block {
     position: relative !important;
-    display: flex !important;
+    display: block !important;
     transform: none !important;
     opacity: 1 !important;
     visibility: visible !important;
+    height: auto !important;
+    min-height: auto !important;
   }
 }
 

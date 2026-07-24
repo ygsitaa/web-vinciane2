@@ -11,8 +11,8 @@
           <h2 class="text-3xl md:text-5xl font-heading font-bold mb-3" style="color: #3D2B1F;">
             Le Guide des <span class="text-terracotta">Parents</span>
           </h2>
-          <p class="text-mid max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
-            Des chapitres simples, bienveillants et concrets pour mieux comprendre les signes, les besoins et les outils associés à l'ADHD chez l'enfant.
+          <p class="text-black md:text-mid text-shadow-lg text-shadow-white max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
+            Des chapitres simples, bienveillants et concrets pour mieux comprendre les signes, les besoins et les outils associés au TDAH chez l'enfant.
           </p>
         </div>
 

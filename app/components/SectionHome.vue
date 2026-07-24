@@ -1,10 +1,10 @@
 <template>
-  <section id="home" class="w-full relative flex items-center justify-center snap-start snap-always overflow-hidden bg-cover" :style="{ backgroundImage: `url(${bg})` }">
+  <section id="home" class="w-full relative flex items-start md:items-center justify-center snap-start snap-always bg-cover overflow-visible md:overflow-hidden min-h-screen md:min-h-[100dvh]">
     <!-- Decorative background -->
-    <!-- <div class="absolute inset-0 z-0 bg-cream"></div> -->
+    <div class="absolute inset-0 z-0 bg-cream bg-cover bg-center bg-no-repeat" :style="{ backgroundImage: `url(${bg})` }"></div>
 
     <!-- Content -->
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 py-24 md:py-0 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 py-16 md:py-0 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
       
       <!-- Left: Portrait -->
       <div class="shrink-0 flex flex-col items-center md:items-start gap-4">
@@ -20,23 +20,24 @@
 
       <!-- Right: Text -->
       <div class="flex flex-col items-center md:items-start text-center md:text-left max-w-xl">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-4" style="color: #3D2B1F;">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight mb-4" style="color: #3D2B1F;">
           Tribu<span class="text-terracotta">Six</span>
         </h1>
-        <p class="text-lg md:text-xl font-heading italic mb-6 text-mid">
+        <p class="text-base md:text-lg font-heading italic mb-6 text-mid">
           <span>🌻</span> Accompagner les parents et enfants extraordinaires avec douceur.
         </p>
 
         <div class="p-6 mb-8 text-left leading-relaxed text-mid text-sm md:text-base bg-white/95 border border-terracotta/20 rounded-3xl">
           <p class="mb-3">
-            Autrice, maman de six enfants et créatrice de ressources pour les familles confrontées au TDAH, aux troubles des apprentissages et à l'épuisement parental.
-          </p>
-          <p>
-            À travers sa collection <strong class="text-terracotta">TribuSix</strong>, elle offre aux enfants "tornades" et à leurs parents des outils concrets pour vivre ensemble avec plus de sérénité, de compréhension… et beaucoup d'amour.
+            Ici, vous trouverez un espace pensé pour les familles qui cherchent à mieux comprendre, accompagner et soutenir leurs enfants, avec bienveillance, sans jugement et sans culpabilité.
+            Chaque enfant est unique. Chaque parent avance avec son histoire, ses doutes, ses espoirs et ses découvertes. Parce qu'il n'existe pas de mode d'emploi pour être parent, j'ai imaginé un lieu où chacun peut trouver des ressources, des repères, des mots qui rassurent et des instants pour souffler.
+            Au fil des pages, vous découvrirez des livres, des guides, des outils, des espaces dédiés aux parents et aux enfants, ainsi que des ressources pour vous accompagner, pas à pas, sur votre propre chemin.
+            Prenez le temps de vous installer. Vous êtes ici chez vous.
+            Parce qu'il n'existe pas un seul chemin pour grandir, apprendre ou être parent.
           </p>
         </div>
 
-        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start pb-6 md:pb-0">
           <button 
             @click="$emit('go-to-library')" 
             class="btn-primary"

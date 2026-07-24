@@ -1,5 +1,5 @@
 <template>
-  <section id="jardin" class="w-full h-full relative flex items-start justify-center snap-start snap-always overflow-hidden">
+  <section id="jardin" class="w-full relative flex items-start justify-center snap-start snap-always overflow-hidden">
 
     <!-- Fixed background image covering the viewport -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">

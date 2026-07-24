@@ -1,13 +1,13 @@
 <template>
   <header 
-    class="hidden xl:flex fixed top-0 left-1/2 -translate-x-1/2 w-full z-50 transition-all duration-300 py-4 px-6 2xl:px-12 justify-between items-center glass-panel rounded-full mt-4 mx-4"
-    style="width: calc(90% - 2rem);"
+    class="hidden xl:flex fixed top-0 left-1/2 -translate-x-1/2 w-full z-50 transition-all duration-300 py-4 px-6 2xl:px-12 justify-center items-center glass-panel rounded-full mt-4 mx-4"
+    style="width: calc(75% - 2rem);"
   >
-    <div class="flex items-center cursor-pointer" @click="goToHome">
+    <!-- <div class="flex items-center cursor-pointer" @click="goToHome">
       <span class="font-heading font-bold text-2xl tracking-wider text-dark-text">
         Vinciane <span class="text-terracotta">H.</span>
       </span>
-    </div>
+    </div> -->
 
     <nav class="flex items-center gap-8">
       <button 
@@ -55,7 +55,7 @@
       <div class="relative" ref="linksMenuRef">
         <button 
           @click="isLinksMenuOpen = !isLinksMenuOpen" 
-          class="text-sm font-semibold text-terracotta hover:text-dark-text transition-colors uppercase tracking-wider ml-2"
+          class="text-sm font-semibold text-[#E0AB50] hover:text-dark-text transition-colors uppercase tracking-wider ml-2"
         >
           Liens Externes ↓
         </button>
@@ -74,8 +74,8 @@
     </nav>
   </header>
 
-  <button class="fixed top-4 right-4 z-50 xl:hidden flex items-center justify-center w-14 h-14 rounded-full bg-terracotta text-white shadow-xl shadow-terracotta/30 border border-white/30" @click="isMobileMenuOpen = true" aria-label="Ouvrir le menu mobile">
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <button class="fixed top-4 right-4 z-50 xl:hidden flex items-center justify-center w-10 h-10 rounded-full bg-terracotta text-white shadow-xl shadow-terracotta/30 border border-white/30" @click="isMobileMenuOpen = true" aria-label="Ouvrir le menu mobile">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
       <line x1="3" y1="7" x2="21" y2="7"></line>
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="17" x2="21" y2="17"></line>

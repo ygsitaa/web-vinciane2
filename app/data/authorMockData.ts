@@ -14,7 +14,7 @@ export interface AuthorProfile {
 export const mockAuthorProfile: AuthorProfile = {
   title: 'Qui suis-je',
   name: 'Vinciane Hodiamont',
-  subtitle: 'Autrice, maman de six enfants et créatrice TribuSix',
+  subtitle: 'Autrice, maman et créatrice TribuSix',
   photo: {
     url: '/images/selfievinc_edited.jpg',
     alt: 'Vinciane Hodiamont',

@@ -34,7 +34,7 @@
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight mb-3" style="color: #3D2B1F;">
           {{ author.name }}
         </h2>
-        <p class="text-lg md:text-xl font-heading italic mb-8 text-mid">
+        <p class="text-lg md:text-xl font-heading italic mb-8 text-mid text-shadow-lg text-shadow-white">
           {{ author.subtitle }}
         </p>
 
