@@ -63,9 +63,9 @@
           v-if="isLinksMenuOpen" 
           class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
         >
-          <a href="#" target="_blank" class="block px-4 py-2 text-sm font-semibold text-terracotta hover:bg-gray-100 transition-colors uppercase tracking-wider">
+          <!-- <a href="#" target="_blank" class="block px-4 py-2 text-sm font-semibold text-terracotta hover:bg-gray-100 transition-colors uppercase tracking-wider">
             Le coin des petites tornades ↗
-          </a>
+          </a> -->
           <a href="#" target="_blank" class="block px-4 py-2 text-sm font-semibold text-terracotta hover:bg-gray-100 transition-colors uppercase tracking-wider">
             Blog ↗
           </a>

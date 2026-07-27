@@ -1,5 +1,5 @@
 <template>
-  <section id="home" class="w-full relative flex items-start md:items-center justify-center snap-start snap-always bg-cover overflow-visible md:overflow-hidden min-h-screen md:min-h-[100dvh]">
+  <section id="home" class="w-full relative flex items-start md:items-center justify-center snap-start snap-always bg-cover overflow-visible md:overflow-hidden min-h-screen md:min-h-dvh">
     <!-- Decorative background -->
     <div class="absolute inset-0 z-0 bg-cream bg-cover bg-center bg-no-repeat" :style="{ backgroundImage: `url(${bg})` }"></div>
 

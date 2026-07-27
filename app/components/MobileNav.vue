@@ -51,7 +51,7 @@
         Contact
       </button>
 
-      <a href="#" target="_blank" class="mt-4 text-lg font-semibold text-terracotta">Le coin des petites tornades ↗</a>
+      <!-- <a href="#" target="_blank" class="mt-4 text-lg font-semibold text-terracotta">Le coin des petites tornades ↗</a> -->
       <a href="#" target="_blank" class="text-lg font-semibold text-terracotta">Blog ↗</a>
     </nav>
   </div>
