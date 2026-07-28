@@ -3,8 +3,8 @@ export const astrocalculData = {
   description: 'Astrocalcul est une application pensée pour aider vos petites tornades à aborder le calcul mental de manière ludique et stimulante. Partez à la découverte des nombres à travers des mini-jeux captivants dans un univers cosmique !',
   images: [
     { id: 1, src: 'https://play-lh.googleusercontent.com/etxOMTjqsDGRsKYiQnuYkhGOJRDm2H7PJaopu4sLknm_BQAnWUh08cMm-q3S0FpE6RYrQaagyh5fC365N5t_3Mo=w2560-h1440', alt: 'Astrocalcul écran 1' },
-    { id: 2, src: '/images/astrocalcul2.jpg', alt: 'Astrocalcul écran 2' },
-    { id: 3, src: '/images/astrocalcul3.jpg', alt: 'Astrocalcul écran 3' },
+    { id: 2, src: 'https://play-lh.googleusercontent.com/wRn2N3uEBQPr8-XL4FjXpTctnrANGSKdYet3sArYJ65ivWYm6qVMKeVmI9X9qxvnvmCkT9aSly8E4D5HFQ1l0Q=w2560-h1440', alt: 'Astrocalcul écran 2' },
+    { id: 3, src: 'https://play-lh.googleusercontent.com/0xOZMT0OIzuWf55eXd5GpkHvX-KncBQidLzcAYfdLAeS7Hs5JBeNUxqNa6NAgIAH0hOp37zCZMbGt4_qFRAv1Q=w2560-h1440', alt: 'Astrocalcul écran 3' },
   ],
   appStoreLink: 'https://apps.apple.com/us/app/astrocalcul-fun-mental-math/id6760236661',
   playStoreLink: 'https://play.google.com/store/apps/details?id=com.JeremProd.AstroCalcul',
