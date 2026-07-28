@@ -1,16 +1,22 @@
 <template>
-  <section id="bibliotheque" class="w-full relative flex items-start justify-center snap-start snap-always overflow-y-auto">
+  <section id="bibliotheque" class="w-full relative flex items-start justify-center snap-start snap-always overflow-hidden">
     
-    <!-- Background decoration -->
+    <!-- Fixed background image covering the viewport -->
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        :style="{ backgroundImage: `url(${bg})` }"
+      ></div>
       <div class="absolute top-0 right-0 w-80 h-80 rounded-full opacity-20" style="background: radial-gradient(circle, #FBD4AD, transparent 70%);"></div>
       <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-15" style="background: radial-gradient(circle, #E3BCB5, transparent 70%);"></div>
     </div>
 
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 pt-6 xl:pt-28 pb-12">
+    <!-- Scrollable content -->
+    <div class="relative z-10 w-full h-full overflow-y-auto">
+      <div class="w-full max-w-6xl mx-auto px-6 md:px-12 pt-6 xl:pt-28 pb-12">
 
       <!-- Header -->
-      <div class="text-center mb-10">
+      <div class="p-6 mb-8 text-center leading-relaxed text-mid text-sm md:text-base bg-white/85 border border-terracotta/20 rounded-3xl">
         <h2 class="text-3xl md:text-5xl font-heading font-bold mb-3" style="color: #3D2B1F;">
           Bibliothèque <span class="text-terracotta">Tribusix</span>
         </h2>
@@ -25,7 +31,7 @@
         <div 
           v-for="book in books" 
           :key="book.id" 
-          class="flex flex-col items-center gap-6 w-full max-w-sm"
+          class="flex flex-col items-center gap-6 w-full max-w-full"
         >
           <!-- Book Flip Card -->
           <div 
@@ -49,7 +55,7 @@
           </div>
 
           <!-- Info -->
-          <div class="text-center w-full">
+          <div class="text-center max-w-2xl p-6 mb-8 leading-relaxed text-mid text-sm md:text-base bg-white/85 border border-terracotta/20 rounded-3xl">
             <h3 class="font-heading font-bold text-lg text-dark-text mb-1">{{ book.title }}</h3>
             <p class="text-xs text-mid italic mb-1">{{ book.subtitle }}</p>
             <p class="text-sm text-mid mb-4 leading-relaxed px-2">{{ book.description }}</p>
@@ -67,7 +73,7 @@
                 rel="noopener noreferrer"
                 class="btn-primary flex items-center justify-center gap-2 no-underline"
               >
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39.01.357.226l-.002.014c-.493 3.113-1.493 5.325-3 6.637l-.46.37c-.022.018-.043.033-.064.048C14.994 28.37 11.87 29 8.57 29 4.15 29 .195 27.6.195 27.6S.09 27.55.05 27.45C-.02 27.23.03 17.87.045 18.02zm9.763-16.97C12 1.05 14.285 1.5 16.15 3c.4.33.63.8.5 1.27l-.02.05c-.13.4-.57.63-.96.5-.05-.013-.1-.028-.14-.045C13.96 4.17 11.9 3.87 9.66 4.07 7.41 4.27 5.4 5 3.63 6.24c-.37.27-.88.2-1.16-.15L2.4 6c-.28-.36-.21-.87.15-1.15C5.01 2.67 7.47 1.8 9.81 1.05zm7.56 4.3l.04.04c2.4 2.79 3.2 6.27 2.38 10.46-.05.27-.29.44-.56.39-.27-.05-.44-.29-.39-.56.75-3.85.01-6.99-2.2-9.57-.19-.22-.16-.55.06-.74.22-.19.55-.16.74.06l-.07-.08zm-5.26 2.15c.67-.08 1.37-.05 2.1.09l.18.04c3.32.88 5.04 4.17 4.15 7.49l-.04.14c-.97 3.4-4.3 5.13-7.62 4.24l-.14-.04c-3.32-.88-5.04-4.17-4.15-7.49.05-.21.11-.42.18-.62.8-2.5 2.77-3.61 5.34-3.85zm-1.26 1.98c-1.82.21-3.2 1.04-3.8 2.96l-.06.2c-.62 2.49.75 5.04 3.25 5.7 2.49.66 5.04-.75 5.7-3.25.66-2.49-.75-5.04-3.25-5.7l-.14-.03c-.57-.12-1.14-.15-1.7-.08z"/></svg>
+                <!-- <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.045 18.02c.072-.116.187-.124.348-.022 3.636 2.11 7.594 3.166 11.87 3.166 2.852 0 5.668-.533 8.447-1.595l.315-.14c.138-.06.234-.1.293-.13.226-.088.39.01.357.226l-.002.014c-.493 3.113-1.493 5.325-3 6.637l-.46.37c-.022.018-.043.033-.064.048C14.994 28.37 11.87 29 8.57 29 4.15 29 .195 27.6.195 27.6S.09 27.55.05 27.45C-.02 27.23.03 17.87.045 18.02zm9.763-16.97C12 1.05 14.285 1.5 16.15 3c.4.33.63.8.5 1.27l-.02.05c-.13.4-.57.63-.96.5-.05-.013-.1-.028-.14-.045C13.96 4.17 11.9 3.87 9.66 4.07 7.41 4.27 5.4 5 3.63 6.24c-.37.27-.88.2-1.16-.15L2.4 6c-.28-.36-.21-.87.15-1.15C5.01 2.67 7.47 1.8 9.81 1.05zm7.56 4.3l.04.04c2.4 2.79 3.2 6.27 2.38 10.46-.05.27-.29.44-.56.39-.27-.05-.44-.29-.39-.56.75-3.85.01-6.99-2.2-9.57-.19-.22-.16-.55.06-.74.22-.19.55-.16.74.06l-.07-.08zm-5.26 2.15c.67-.08 1.37-.05 2.1.09l.18.04c3.32.88 5.04 4.17 4.15 7.49l-.04.14c-.97 3.4-4.3 5.13-7.62 4.24l-.14-.04c-3.32-.88-5.04-4.17-4.15-7.49.05-.21.11-.42.18-.62.8-2.5 2.77-3.61 5.34-3.85zm-1.26 1.98c-1.82.21-3.2 1.04-3.8 2.96l-.06.2c-.62 2.49.75 5.04 3.25 5.7 2.49.66 5.04-.75 5.7-3.25.66-2.49-.75-5.04-3.25-5.7l-.14-.03c-.57-.12-1.14-.15-1.7-.08z"/></svg> -->
                 Commander sur Amazon
               </a>
               <a 
@@ -76,13 +82,14 @@
                 rel="noopener noreferrer"
                 class="btn-secondary flex items-center justify-center gap-2 no-underline"
               >
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z"/></svg>
+                <!-- <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z"/></svg> -->
                 Commander en ligne
               </a>
             </div>
           </div>
         </div>
 
+      </div>
       </div>
     </div>
 
@@ -100,6 +107,8 @@ const modalBook = ref<any>(null)
 
 const openModal = (book: any) => { modalBook.value = book }
 const closeModal = () => { modalBook.value = null }
+
+const bg = useAsset('/images/background_biblio.jpg')
 
 const books = [
   {

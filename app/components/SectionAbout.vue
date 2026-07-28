@@ -1,7 +1,7 @@
 <template>
   <section id="qui-suis-je" class="w-full relative flex items-center justify-center snap-start snap-always overflow-hidden">
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <div class="absolute inset-0 bg-cover"  :style="{ backgroundImage: `url(${bg})` }"></div>
+      <div class="absolute inset-0 bg-cover" :style="{ backgroundImage: `url(${bg})` }"></div>
       <div class="absolute -top-20 -left-20 w-72 h-72 rounded-full opacity-25" style="background: radial-gradient(circle, #F3BC62, transparent 70%);"></div>
       <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-20" style="background: radial-gradient(circle, #E3BCB5, transparent 70%);"></div>
     </div>
