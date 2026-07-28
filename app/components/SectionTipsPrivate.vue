@@ -94,5 +94,5 @@ const isAudioModalOpen = ref(false)
 const isPdfModalOpen = ref(false)
 const isMeditationModalOpen = ref(false)
 
-const bg = useAsset('/images/background_jardin.png')
+const bg = useAsset('/images/background_jardinsecret.jpg')
 </script>

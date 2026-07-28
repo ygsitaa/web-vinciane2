@@ -63,7 +63,7 @@
           <div class="warm-panel p-6 rounded-3xl text-center">
             <p class="font-heading font-bold text-xl text-dark-text mb-2">📚 Un livre peut ouvrir un monde</p>
             <p class="text-mid text-sm mb-4">Chaque page est pensée pour apporter présence, douceur et compréhension.</p>
-            <button @click="slider.goTo(2)" class="btn-secondary">Voir la bibliothèque</button>
+            <button @click="goToSection(2)" class="btn-secondary">Voir la bibliothèque</button>
           </div>
         </div>
       </div>
@@ -73,6 +73,8 @@
 
 <script setup lang="ts">
 import { useSlider } from '../composables/useSlider'
+import { usePublicNavigation } from '../composables/usePublicNavigation'
 
 const slider = useSlider()
+const { goToSection } = usePublicNavigation()
 </script>

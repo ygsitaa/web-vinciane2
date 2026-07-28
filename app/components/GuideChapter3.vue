@@ -72,5 +72,5 @@
 <script setup lang="ts">
 import { useAsset } from '~/composables/useAsset'
 
-const schemaUrl = useAsset('/images/schema.png')
+const schemaUrl = useAsset('/images/schema.jpg')
 </script>

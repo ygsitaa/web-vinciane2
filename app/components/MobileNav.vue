@@ -48,10 +48,16 @@
         class="text-2xl font-heading tracking-widest transition-colors"
         :class="!isSecretPage && slider.currentIndex.value === 5 ? 'text-terracotta' : 'text-dark-text'"
       >
+        Petites Tornades
+      </button>
+      <button 
+        @click="navTo(6)" 
+        class="text-2xl font-heading tracking-widest transition-colors"
+        :class="!isSecretPage && slider.currentIndex.value === 6 ? 'text-terracotta' : 'text-dark-text'"
+      >
         Contact
       </button>
 
-      <!-- <a href="#" target="_blank" class="mt-4 text-lg font-semibold text-terracotta">Le coin des petites tornades ↗</a> -->
       <a href="#" target="_blank" class="text-lg font-semibold text-terracotta">Blog ↗</a>
     </nav>
   </div>

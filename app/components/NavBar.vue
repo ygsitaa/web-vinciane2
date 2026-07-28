@@ -50,6 +50,13 @@
         class="text-sm font-medium tracking-wide uppercase transition-colors hover:text-terracotta cursor-pointer"
         :class="!isSecretPage && slider.currentIndex.value === 5 ? 'text-terracotta' : 'text-mid'"
       >
+        Petites Tornades
+      </button>
+      <button 
+        @click="goToSection(6)" 
+        class="text-sm font-medium tracking-wide uppercase transition-colors hover:text-terracotta cursor-pointer"
+        :class="!isSecretPage && slider.currentIndex.value === 6 ? 'text-terracotta' : 'text-mid'"
+      >
         Contact
       </button>
       <div class="relative" ref="linksMenuRef">
@@ -63,9 +70,6 @@
           v-if="isLinksMenuOpen" 
           class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
         >
-          <!-- <a href="#" target="_blank" class="block px-4 py-2 text-sm font-semibold text-terracotta hover:bg-gray-100 transition-colors uppercase tracking-wider">
-            Le coin des petites tornades ↗
-          </a> -->
           <a href="#" target="_blank" class="block px-4 py-2 text-sm font-semibold text-terracotta hover:bg-gray-100 transition-colors uppercase tracking-wider">
             Blog ↗
           </a>
